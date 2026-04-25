@@ -2,20 +2,17 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { Loader2 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
-import { Sidebar } from "@/components/Sidebar";
-import { ResumeContent } from "@/components/ResumeContent";
+import { ResumeEditor } from "@/components/ResumeEditor";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "김성덕 (Sung-Deok Kim) — Principal Cloud Specialist" },
+      { title: "김성덕 (Sung-Deok Kim) — Resume Editor" },
       {
         name: "description",
         content:
-          "25년+ ICT 경력의 클라우드 플랫폼 전문가. Samsung Cloud Platform(SCP) 내재화·상품 개발, OpenStack/VMware 아키텍처, DevOps 자동화 리드.",
+          "Markdown으로 편집하고 즉시 미리보는 인터랙티브 이력서. Samsung Cloud Platform 리드 엔지니어 김성덕.",
       },
-      { property: "og:title", content: "김성덕 — Principal Cloud Specialist / TAM" },
-      { property: "og:description", content: "Samsung Cloud Platform 리드 엔지니어의 인터랙티브 이력서." },
     ],
   }),
   component: Index,
@@ -31,7 +28,7 @@ function Index() {
     }
   }, [loading, isAuthenticated, navigate]);
 
-  if (loading || !isAuthenticated) {
+  if (loading || !isAuthenticated || !user) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <link
@@ -47,17 +44,12 @@ function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       />
-      <Sidebar userEmail={user?.email ?? undefined} />
-      <main className="ml-72 px-10 py-14 lg:px-16">
-        <div className="mx-auto max-w-5xl">
-          <ResumeContent />
-        </div>
-      </main>
-    </div>
+      <ResumeEditor userId={user.id} userEmail={user.email ?? undefined} />
+    </>
   );
 }
