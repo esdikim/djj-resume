@@ -24,11 +24,11 @@ function Index() {
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
-      navigate({ to: "/login" });
+      navigate({ to: "/login", replace: true });
     }
   }, [loading, isAuthenticated, navigate]);
 
-  if (loading || !isAuthenticated || !user) {
+  if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <link
@@ -37,10 +37,15 @@ function Index() {
         />
         <div className="flex items-center gap-3 text-muted-foreground">
           <Loader2 className="h-5 w-5 animate-spin text-brand" />
-          <span className="font-mono text-sm">Loading...</span>
+          <span className="font-mono text-sm">세션 확인 중...</span>
         </div>
       </div>
     );
+  }
+
+  if (!isAuthenticated || !user) {
+    // navigate effect will redirect to /login; render nothing in the meantime
+    return null;
   }
 
   return (
