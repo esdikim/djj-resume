@@ -31,7 +31,7 @@ export const resumeData = {
     company: "Samsung SDS",
     role: "Principal Cloud Engineer",
     sub: "Cloud Technical Lead · Technical Account Manager 역할 수행",
-    period: "2018.01 — Present",
+    period: "2018.01 — 현재 (8년+)",
     location: "서울, 대한민국",
     responsibilities: [
       "엔터프라이즈 클라이언트를 위한 클라우드 서비스 로드맵 설계 및 기술 지원",
