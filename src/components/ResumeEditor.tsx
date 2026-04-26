@@ -199,7 +199,7 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
               value={content}
               onChange={(e) => setContent(e.target.value)}
               spellCheck={false}
-              className="min-h-[calc(100vh-7.5rem)] w-full flex-1 resize-none border-0 bg-background p-6 font-mono text-sm leading-relaxed text-foreground outline-none focus:ring-0"
+              className="min-h-[calc(100vh-7.5rem)] w-full flex-1 resize-none border-0 bg-background px-6 pt-4 pb-6 font-mono text-[15px] font-medium leading-7 text-foreground caret-brand outline-none focus:ring-0"
               placeholder="# 이름&#10;&#10;마크다운으로 이력서를 작성하세요..."
             />
           </div>
