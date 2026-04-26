@@ -68,8 +68,22 @@ export function buildMarkdown(): string {
   lines.push(`## Certifications`);
   r.certifications.forEach((c) => lines.push(`- **${c.name}** — ${c.org} (${c.year})`));
   lines.push(``);
+  lines.push(`## Leadership & People Management`);
+  lines.push(`- **Team Size**: ${r.leadership.teamSize}`);
+  lines.push(`- **Mentoring**: ${r.leadership.mentoring}`);
+  lines.push(`- **Cross-Functional**: ${r.leadership.crossFunctional}`);
+  r.leadership.bullets.forEach((b) => lines.push(`- ${b}`));
+  lines.push(``);
   lines.push(`## Education`);
-  lines.push(`- **${r.education.school}** — ${r.education.degree}`);
+  r.educationDetail.forEach((e) =>
+    lines.push(`- **${e.school}** — ${e.degree}${e.period ? ` (${e.period})` : ""}`),
+  );
+  lines.push(``);
+  lines.push(`## Languages`);
+  r.languages.forEach((l) => lines.push(`- **${l.name}** — ${l.level}`));
+  lines.push(``);
+  lines.push(`## Speaking & Community`);
+  r.speaking.forEach((s) => lines.push(`- **[${s.year}]** ${s.title} — *${s.venue}*`));
   lines.push(``);
   lines.push(`## Publications`);
   lines.push(`### 『IT 미래를 혁신할 오픈소스SW』 시리즈 (Samsung SDS 인사이트 리포트)`);
