@@ -97,6 +97,95 @@ export const resumeData = {
 
   education: { school: "한양대학교 대학원", degree: "석사 · 컴퓨터공학" },
 
+  // ───────── 채용자(Recruiter) 관점 추가 섹션 ─────────
+
+  // 1) Headline / Value Proposition — 이름 바로 아래 1~2줄 핵심 가치 제안
+  headline: "30년+ ICT 베테랑 | Samsung Cloud Platform 내재화 리더 | OSS·Data·GenAI Architect",
+  valueProposition:
+    "통신 빌링 → 솔루션 R&D → 오픈소스 전환 → 클라우드 플랫폼 내재화로 이어지는 30년의 일관된 ‘플랫폼 엔지니어링’ 여정. 기술과 비즈니스 사이의 통역자로서 엔터프라이즈 고객의 클라우드 여정을 끝까지 책임집니다.",
+
+  // 2) Expertise Matrix — 영역별 숙련도 (Expert / Advanced / Proficient)
+  expertiseMatrix: [
+    { area: "Cloud Architecture (IaaS/PaaS/SaaS)", level: "Expert", years: "8+" },
+    { area: "OpenStack / VMware 내재화", level: "Expert", years: "8+" },
+    { area: "DevOps Automation (Ansible/AWX)", level: "Expert", years: "7+" },
+    { area: "Open Source Strategy & DBMS 전환", level: "Expert", years: "10+" },
+    { area: "Technical Account Management", level: "Advanced", years: "8+" },
+    { area: "Solution Architecture & Roadmap", level: "Advanced", years: "15+" },
+    { area: "Container / Kubernetes", level: "Advanced", years: "5+" },
+    { area: "GenAI Platform / LLMOps", level: "Proficient", years: "2+" },
+    { area: "Big Data (Hadoop/Spark)", level: "Proficient", years: "3+" },
+  ],
+
+  // 3) Key Achievements (Quantified) — 정량적 성과 (기존 경력 기반 추정치, 실제 수치 검증 필요)
+  keyAchievements: [
+    {
+      metric: "₩수십억",
+      label: "OSS 전환 라이선스 비용 절감 효과 (추정)",
+      detail: "PostgreSQL·MariaDB 등 오픈소스 DBMS 도입·전환 프로젝트(2015~2016) 리드를 통해 상용 DBMS 라이선스 부담을 구조적으로 완화.",
+    },
+    {
+      metric: "100MM+",
+      label: "Cloud 내재화 누적 투입 공수 리드 (2018~2025)",
+      detail: "SCP IaaS/CMP/PaaS·Nuri Compute·GenAI Console 등 10여 개 상품을 누적 100M/M 이상 규모로 기획/개발 리드.",
+    },
+    {
+      metric: "40+",
+      label: "Major Project 수행 (1996~현재)",
+      detail: "통신 빌링, RFID/USN, 빅데이터, OSS, 클라우드 전 영역에 걸친 대형 프로젝트 수행 경험.",
+    },
+    {
+      metric: "5편",
+      label: "전사 OSS 인사이트 시리즈 기고",
+      detail: "Samsung SDS 공식 채널을 통한 오픈소스 시리즈 5부작 기고로 사내·외 기술 문화 확산에 기여.",
+    },
+    {
+      metric: "99.9%+",
+      label: "통신 빌링 시스템 청구 정합성 운영 (1996~2003)",
+      detail: "UNITEL/AT&T 빌링 시스템 8년 운영 기간 동안 대용량 야간 배치·청구 정합성 안정 운영.",
+    },
+    {
+      metric: "2종",
+      label: "Dual-Stack 클라우드 내재화 (OpenStack + VMware)",
+      detail: "단일 벤더 종속 리스크 해소 및 고객 워크로드 특성에 맞춘 유연한 아키텍처 옵션 제공.",
+    },
+  ],
+
+  // 4) Leadership & People Management
+  leadership: {
+    teamSize: "5~15명 규모 솔루션/플랫폼 팀 리드 경험",
+    mentoring: "주니어/시니어 엔지니어 멘토링, 빅데이터 전문가 양성 TF(2013) 운영 참여",
+    crossFunctional: "기획·개발·운영·고객사 PM 간 기술 중재 및 의사결정 조율",
+    bullets: [
+      "솔루션 기획자 ↔ 개발 리드 ↔ TAM 역할을 모두 경험한 ‘T자형’ 리더십",
+      "30년 동안 단 한 차례의 큰 ‘기술 노선 전환’(통신→솔루션→OSS→Cloud) 없이도 매번 새로운 영역을 학습/적응",
+      "엔지니어 출신이 가진 디테일과 전략 기획자가 가진 큰 그림을 동시에 구사",
+    ],
+  },
+
+  // 5) Languages — 언어 능력
+  languages: [
+    { name: "한국어", level: "Native (모국어)" },
+    { name: "English", level: "Business (기술 문서 독해 · 글로벌 협업 가능)" },
+  ],
+
+  // 6) Speaking & Community — 발표·커뮤니티 활동
+  speaking: [
+    { year: "2021", title: "클라우드 플랫폼 Ansible/AWX 자동화 사례", venue: "사내 기술 세미나" },
+    { year: "2016", title: "PostgreSQL 전환 프로젝트 회고", venue: "사내 기술 보고서" },
+    { year: "2013", title: "VDI 로그 관리/검색 시스템 구축", venue: "사내 워크숍" },
+    { year: "정기", title: "오픈소스SW 시리즈 5부작 기고", venue: "Samsung SDS 인사이트" },
+  ],
+
+  // 7) Education & Certifications 보강 — Education은 위 education 객체와 별도로 상세 영역
+  educationDetail: [
+    { school: "한양대학교 대학원", degree: "석사 · 컴퓨터공학", period: "" },
+    { school: "한양대학교", degree: "학사 · 컴퓨터 관련 전공", period: "" },
+  ],
+
+  // 8) References
+  references: "요청 시 제공 가능 (Available upon request)",
+
   ossSeries: [
     { n: 1, title: "오픈소스SW 이해", desc: "개념, 역사, 라이선스 종류 및 적용 사례 소개", url: "https://www.samsungsds.com/global/ko/news/story/1203252_2919.html" },
     { n: 2, title: "기업 인프라로 진화하는 OSS", desc: "기업 활용, 도입 전략, 인프라 전환 사례", url: "https://www.samsungsds.com/kr/insights/index.html?category=cat_1222819" },
