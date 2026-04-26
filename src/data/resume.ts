@@ -64,13 +64,13 @@ export const resumeData = {
   ],
 
   earlierHighlights: [
-    { period: "2017", title: "B2B 클라우드향 자동화 (Smart Workflow R&D)", desc: "공공/기업 대상 워크플로우 자동화 솔루션 연구개발." },
-    { period: "2015–2016", title: "PostgreSQL 적용/전환 과제", desc: "오픈소스 DBMS 도입·전환 프로젝트 리드 (18.0MM)." },
-    { period: "2014", title: "DB 동기화 고도화 / CDN 분배시스템 개발 TF", desc: "Oracle·MySQL·PostgreSQL 동기화, GSLB·CDN 분배 시스템 설계." },
-    { period: "2013", title: "VDI 로그 관리/검색 시스템 구축 · 빅데이터 실습 TF", desc: "Java/RHEL/Apache/Tomcat 기반 로그 시스템 및 빅데이터 전문가 양성." },
-    { period: "2010–2012", title: "기술 로드맵 / 경영혁신 마스터플랜", desc: "인프라본부 기술 로드맵, 본부 솔루션 경쟁력 강화 혁신과제 (BPM, 전략경영)." },
-    { period: "2009", title: "RFID/USN 위치추적 솔루션 개발", desc: "PRO*C, Oracle, Windows Server 기반 SmartCity 위치추적 솔루션 개발." },
-    { period: "1996–2003", title: "UNITEL · AT&T Billing System 개발/운영", desc: "통신사 빌링/청구/수납 시스템 개발 및 운영, 청구 자동화 시스템 구축." },
+    { period: "2017 (1년)", title: "B2B 클라우드향 자동화 (Smart Workflow R&D)", desc: "공공/기업 대상 워크플로우 자동화 솔루션 연구개발." },
+    { period: "2015–2016 (2년)", title: "PostgreSQL 적용/전환 과제", desc: "오픈소스 DBMS 도입·전환 프로젝트 리드 (18.0MM)." },
+    { period: "2014 (1년)", title: "DB 동기화 고도화 / CDN 분배시스템 개발 TF", desc: "Oracle·MySQL·PostgreSQL 동기화, GSLB·CDN 분배 시스템 설계." },
+    { period: "2013 (1년)", title: "VDI 로그 관리/검색 시스템 구축 · 빅데이터 실습 TF", desc: "Java/RHEL/Apache/Tomcat 기반 로그 시스템 및 빅데이터 전문가 양성." },
+    { period: "2010–2012 (3년)", title: "기술 로드맵 / 경영혁신 마스터플랜", desc: "인프라본부 기술 로드맵, 본부 솔루션 경쟁력 강화 혁신과제 (BPM, 전략경영)." },
+    { period: "2004–2009 (6년)", title: "RFID/USN 위치추적 솔루션 개발", desc: "PRO*C, Oracle, Windows Server 기반 SmartCity 위치추적 솔루션 개발." },
+    { period: "1996–2003 (8년)", title: "UNITEL · AT&T Billing System 개발/운영", desc: "통신사 빌링/청구/수납 시스템 개발 및 운영, 청구 자동화 시스템 구축." },
   ],
 
   skillGroups: [
