@@ -9,13 +9,13 @@ export const resumeData = {
   phone: "[전화번호]",
   linkedin: "linkedin.com/in/sungdeok-kim",
 
-  summary: `25년+ ICT 경력의 클라우드 플랫폼 전문가. Samsung Cloud Platform(SCP) 내재화·상품 개발을 리딩하며 OpenStack, VMware, Kubernetes, DevOps 자동화 전반을 아우르는 엔드투엔드 기술 책임을 수행하고 있습니다. 엔터프라이즈 고객의 기술 전략 파트너로서 RCA·인시던트 관리·SLA·솔루션 자문을 수행해 왔으며, 정보관리기술사·PMP 등 검증된 자격과 다수의 기고 활동으로 업계 발전에도 기여하고 있습니다.`,
+  summary: `30년+ ICT 경력(1996~현재)의 클라우드 플랫폼 전문가. Samsung Cloud Platform(SCP) 내재화·상품 개발을 리딩하며 OpenStack, VMware, Kubernetes, DevOps 자동화 전반을 아우르는 엔드투엔드 기술 책임을 수행하고 있습니다. 엔터프라이즈 고객의 기술 전략 파트너로서 RCA·인시던트 관리·SLA·솔루션 자문을 수행해 왔으며, 정보관리기술사·PMP 등 검증된 자격과 다수의 기고 활동으로 업계 발전에도 기여하고 있습니다.`,
 
   stats: [
-    { value: "25+", label: "Years in ICT" },
+    { value: "30+", label: "Years in ICT (1996~)" },
     { value: "40+", label: "Major Projects" },
     { value: "12", label: "Certifications" },
-    { value: "8+", label: "Years on Cloud" },
+    { value: "8+", label: "Years on Cloud (2018~)" },
   ],
 
   competencies: [
