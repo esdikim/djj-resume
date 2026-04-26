@@ -62,14 +62,14 @@ function LoginPage() {
         {/* Left brand panel */}
         <div className="hidden flex-col justify-between rounded-3xl bg-sidebar-grad p-10 text-sidebar-foreground shadow-card lg:flex">
           <div>
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-lg font-bold text-primary-foreground">
-              SK
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-lg font-bold tracking-tight text-primary-foreground">
+              DJJ
             </div>
             <h1 className="mt-8 font-display text-4xl font-bold leading-tight">
-              김성덕의 이력서에<br />오신 것을 환영합니다.
+              DJJ의 이력서에<br />오신 것을 환영합니다.
             </h1>
             <p className="mt-4 max-w-sm text-sm text-sidebar-foreground/70 leading-relaxed">
-              25년+ ICT 경력의 클라우드 플랫폼 전문가. 이력서 열람을 위해 로그인해 주세요.
+              Duck JJang JJang — 30년+ ICT 경력의 클라우드 플랫폼 전문가. 이력서 열람을 위해 로그인해 주세요.
             </p>
           </div>
           <div className="space-y-3 text-sm text-sidebar-foreground/60">
