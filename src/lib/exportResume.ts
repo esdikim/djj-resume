@@ -45,11 +45,23 @@ export function buildMarkdown(): string {
   lines.push(`- **${r.education.school}** — ${r.education.degree}`);
   lines.push(``);
   lines.push(`## Publications`);
-  lines.push(`### 『IT 미래를 혁신할 오픈소스SW』 시리즈 (Samsung SDS 기술블로그)`);
-  r.ossSeries.forEach((s) => lines.push(`${s.n}. **${s.title}** — ${s.desc}`));
+  lines.push(`### 『IT 미래를 혁신할 오픈소스SW』 시리즈 (Samsung SDS 인사이트 리포트)`);
+  r.ossSeries.forEach((s) =>
+    lines.push(
+      s.url
+        ? `${s.n}. **[${s.title}](${s.url})** — ${s.desc}`
+        : `${s.n}. **${s.title}** — ${s.desc}`,
+    ),
+  );
   lines.push(``);
   lines.push(`### Articles & Talks`);
-  r.articles.forEach((a) => lines.push(`- 「${a.title}」 — ${a.outlet}`));
+  r.articles.forEach((a) =>
+    lines.push(
+      a.url
+        ? `- 「[${a.title}](${a.url})」 — ${a.outlet}`
+        : `- 「${a.title}」 — ${a.outlet}`,
+    ),
+  );
   lines.push(``);
   return lines.join("\n");
 }

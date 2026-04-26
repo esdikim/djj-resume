@@ -9,13 +9,13 @@ export const resumeData = {
   phone: "[전화번호]",
   linkedin: "linkedin.com/in/sungdeok-kim",
 
-  summary: `25년+ ICT 경력의 클라우드 플랫폼 전문가. Samsung Cloud Platform(SCP) 내재화·상품 개발을 리딩하며 OpenStack, VMware, Kubernetes, DevOps 자동화 전반을 아우르는 엔드투엔드 기술 책임을 수행하고 있습니다. 엔터프라이즈 고객의 기술 전략 파트너로서 RCA·인시던트 관리·SLA·솔루션 자문을 수행해 왔으며, 정보관리기술사·PMP 등 검증된 자격과 다수의 기고 활동으로 업계 발전에도 기여하고 있습니다.`,
+  summary: `30년+ ICT 경력(1996~현재)의 클라우드 플랫폼 전문가. Samsung Cloud Platform(SCP) 내재화·상품 개발을 리딩하며 OpenStack, VMware, Kubernetes, DevOps 자동화 전반을 아우르는 엔드투엔드 기술 책임을 수행하고 있습니다. 엔터프라이즈 고객의 기술 전략 파트너로서 RCA·인시던트 관리·SLA·솔루션 자문을 수행해 왔으며, 정보관리기술사·PMP 등 검증된 자격과 다수의 기고 활동으로 업계 발전에도 기여하고 있습니다.`,
 
   stats: [
-    { value: "25+", label: "Years in ICT" },
+    { value: "30+", label: "Years in ICT (1996~)" },
     { value: "40+", label: "Major Projects" },
     { value: "12", label: "Certifications" },
-    { value: "8+", label: "Years on Cloud" },
+    { value: "8+", label: "Years on Cloud (2018~)" },
   ],
 
   competencies: [
@@ -31,7 +31,7 @@ export const resumeData = {
     company: "Samsung SDS",
     role: "Principal Cloud Engineer",
     sub: "Cloud Technical Lead · Technical Account Manager 역할 수행",
-    period: "2018.01 — Present",
+    period: "2018.01 — 현재 (8년+)",
     location: "서울, 대한민국",
     responsibilities: [
       "엔터프라이즈 클라이언트를 위한 클라우드 서비스 로드맵 설계 및 기술 지원",
@@ -64,13 +64,13 @@ export const resumeData = {
   ],
 
   earlierHighlights: [
-    { period: "2017", title: "B2B 클라우드향 자동화 (Smart Workflow R&D)", desc: "공공/기업 대상 워크플로우 자동화 솔루션 연구개발." },
-    { period: "2015–2016", title: "PostgreSQL 적용/전환 과제", desc: "오픈소스 DBMS 도입·전환 프로젝트 리드 (18.0MM)." },
-    { period: "2014", title: "DB 동기화 고도화 / CDN 분배시스템 개발 TF", desc: "Oracle·MySQL·PostgreSQL 동기화, GSLB·CDN 분배 시스템 설계." },
-    { period: "2013", title: "VDI 로그 관리/검색 시스템 구축 · 빅데이터 실습 TF", desc: "Java/RHEL/Apache/Tomcat 기반 로그 시스템 및 빅데이터 전문가 양성." },
-    { period: "2010–2012", title: "기술 로드맵 / 경영혁신 마스터플랜", desc: "인프라본부 기술 로드맵, 본부 솔루션 경쟁력 강화 혁신과제 (BPM, 전략경영)." },
-    { period: "2009", title: "RFID/USN 위치추적 솔루션 개발", desc: "PRO*C, Oracle, Windows Server 기반 SmartCity 위치추적 솔루션 개발." },
-    { period: "1996–2003", title: "UNITEL · AT&T Billing System 개발/운영", desc: "통신사 빌링/청구/수납 시스템 개발 및 운영, 청구 자동화 시스템 구축." },
+    { period: "2017 (1년)", title: "B2B 클라우드향 자동화 (Smart Workflow R&D)", desc: "공공/기업 대상 워크플로우 자동화 솔루션 연구개발." },
+    { period: "2015–2016 (2년)", title: "PostgreSQL 적용/전환 과제", desc: "오픈소스 DBMS 도입·전환 프로젝트 리드 (18.0MM)." },
+    { period: "2014 (1년)", title: "DB 동기화 고도화 / CDN 분배시스템 개발 TF", desc: "Oracle·MySQL·PostgreSQL 동기화, GSLB·CDN 분배 시스템 설계." },
+    { period: "2013 (1년)", title: "VDI 로그 관리/검색 시스템 구축 · 빅데이터 실습 TF", desc: "Java/RHEL/Apache/Tomcat 기반 로그 시스템 및 빅데이터 전문가 양성." },
+    { period: "2010–2012 (3년)", title: "기술 로드맵 / 경영혁신 마스터플랜", desc: "인프라본부 기술 로드맵, 본부 솔루션 경쟁력 강화 혁신과제 (BPM, 전략경영)." },
+    { period: "2004–2009 (6년)", title: "RFID/USN 위치추적 솔루션 개발", desc: "PRO*C, Oracle, Windows Server 기반 SmartCity 위치추적 솔루션 개발." },
+    { period: "1996–2003 (8년)", title: "UNITEL · AT&T Billing System 개발/운영", desc: "통신사 빌링/청구/수납 시스템 개발 및 운영, 청구 자동화 시스템 구축." },
   ],
 
   skillGroups: [
@@ -98,19 +98,19 @@ export const resumeData = {
   education: { school: "한양대학교 대학원", degree: "석사 · 컴퓨터공학" },
 
   ossSeries: [
-    { n: 1, title: "오픈소스SW 이해", desc: "개념, 역사, 라이선스 종류 및 적용 사례 소개" },
-    { n: 2, title: "기업 인프라로 진화하는 OSS", desc: "기업 활용, 도입 전략, 인프라 전환 사례" },
-    { n: 3, title: "오픈소스 DBMS 기술", desc: "PostgreSQL, MariaDB 등 도입 및 운영 전략" },
-    { n: 4, title: "빅데이터 시대의 OSS 기술", desc: "Hadoop, Spark, Kafka 등 빅데이터 처리 OSS" },
-    { n: 5, title: "OSS 차세대 트렌드", desc: "AI, 클라우드, IoT, SDN 등과 OSS의 연계 발전 방향" },
+    { n: 1, title: "오픈소스SW 이해", desc: "개념, 역사, 라이선스 종류 및 적용 사례 소개", url: "https://www.samsungsds.com/global/ko/news/story/1203252_2919.html" },
+    { n: 2, title: "기업 인프라로 진화하는 OSS", desc: "기업 활용, 도입 전략, 인프라 전환 사례", url: "https://www.samsungsds.com/kr/insights/index.html?category=cat_1222819" },
+    { n: 3, title: "오픈소스 DBMS 기술", desc: "PostgreSQL, MariaDB 등 도입 및 운영 전략", url: "https://www.samsungsds.com/kr/insights/1233750_4627.html" },
+    { n: 4, title: "빅데이터 시대의 OSS 기술", desc: "Hadoop, Spark, Kafka 등 빅데이터 처리 OSS", url: "https://www.samsungsds.com/kr/insights/index.html?category=cat_1222819" },
+    { n: 5, title: "OSS 차세대 트렌드", desc: "AI, 클라우드, IoT, SDN 등과 OSS의 연계 발전 방향", url: "https://www.samsungsds.com/kr/insights/1233720_4627.html" },
   ],
 
   articles: [
-    { title: "진화하는 위치추적서비스", outlet: "전자신문" },
-    { title: "스토킹범죄, 위치추적 전자장치가 대안이 될 수 있을까?", outlet: "한국일보" },
-    { title: "PostgreSQL 전환 과제: 오픈소스 데이터베이스의 도입과 활용", outlet: "사내 기술 보고서 · 2016.12" },
-    { title: "클라우드 플랫폼에서의 Ansible 및 AWX를 활용한 자동화 사례", outlet: "사내 세미나 · 2021.06" },
-    { title: "VDI 로그 관리/검색 시스템 구축 경험 공유", outlet: "사내 워크숍 · 2013.12" },
+    { title: "진화하는 위치추적서비스", outlet: "전자신문", url: "https://www.etnews.com/" },
+    { title: "스토킹범죄, 위치추적 전자장치가 대안이 될 수 있을까?", outlet: "한국일보", url: "https://www.hankookilbo.com/" },
+    { title: "PostgreSQL 전환 과제: 오픈소스 데이터베이스의 도입과 활용", outlet: "사내 기술 보고서 · 2016.12", url: "" },
+    { title: "클라우드 플랫폼에서의 Ansible 및 AWX를 활용한 자동화 사례", outlet: "사내 세미나 · 2021.06", url: "" },
+    { title: "VDI 로그 관리/검색 시스템 구축 경험 공유", outlet: "사내 워크숍 · 2013.12", url: "" },
   ],
 };
 
