@@ -98,19 +98,19 @@ export const resumeData = {
   education: { school: "한양대학교 대학원", degree: "석사 · 컴퓨터공학" },
 
   ossSeries: [
-    { n: 1, title: "오픈소스SW 이해", desc: "개념, 역사, 라이선스 종류 및 적용 사례 소개" },
-    { n: 2, title: "기업 인프라로 진화하는 OSS", desc: "기업 활용, 도입 전략, 인프라 전환 사례" },
-    { n: 3, title: "오픈소스 DBMS 기술", desc: "PostgreSQL, MariaDB 등 도입 및 운영 전략" },
-    { n: 4, title: "빅데이터 시대의 OSS 기술", desc: "Hadoop, Spark, Kafka 등 빅데이터 처리 OSS" },
-    { n: 5, title: "OSS 차세대 트렌드", desc: "AI, 클라우드, IoT, SDN 등과 OSS의 연계 발전 방향" },
+    { n: 1, title: "오픈소스SW 이해", desc: "개념, 역사, 라이선스 종류 및 적용 사례 소개", url: "https://www.samsungsds.com/global/ko/news/story/1203252_2919.html" },
+    { n: 2, title: "기업 인프라로 진화하는 OSS", desc: "기업 활용, 도입 전략, 인프라 전환 사례", url: "https://www.samsungsds.com/kr/insights/index.html?category=cat_1222819" },
+    { n: 3, title: "오픈소스 DBMS 기술", desc: "PostgreSQL, MariaDB 등 도입 및 운영 전략", url: "https://www.samsungsds.com/kr/insights/1233750_4627.html" },
+    { n: 4, title: "빅데이터 시대의 OSS 기술", desc: "Hadoop, Spark, Kafka 등 빅데이터 처리 OSS", url: "https://www.samsungsds.com/kr/insights/index.html?category=cat_1222819" },
+    { n: 5, title: "OSS 차세대 트렌드", desc: "AI, 클라우드, IoT, SDN 등과 OSS의 연계 발전 방향", url: "https://www.samsungsds.com/kr/insights/1233720_4627.html" },
   ],
 
   articles: [
-    { title: "진화하는 위치추적서비스", outlet: "전자신문" },
-    { title: "스토킹범죄, 위치추적 전자장치가 대안이 될 수 있을까?", outlet: "한국일보" },
-    { title: "PostgreSQL 전환 과제: 오픈소스 데이터베이스의 도입과 활용", outlet: "사내 기술 보고서 · 2016.12" },
-    { title: "클라우드 플랫폼에서의 Ansible 및 AWX를 활용한 자동화 사례", outlet: "사내 세미나 · 2021.06" },
-    { title: "VDI 로그 관리/검색 시스템 구축 경험 공유", outlet: "사내 워크숍 · 2013.12" },
+    { title: "진화하는 위치추적서비스", outlet: "전자신문", url: "https://www.etnews.com/" },
+    { title: "스토킹범죄, 위치추적 전자장치가 대안이 될 수 있을까?", outlet: "한국일보", url: "https://www.hankookilbo.com/" },
+    { title: "PostgreSQL 전환 과제: 오픈소스 데이터베이스의 도입과 활용", outlet: "사내 기술 보고서 · 2016.12", url: "" },
+    { title: "클라우드 플랫폼에서의 Ansible 및 AWX를 활용한 자동화 사례", outlet: "사내 세미나 · 2021.06", url: "" },
+    { title: "VDI 로그 관리/검색 시스템 구축 경험 공유", outlet: "사내 워크숍 · 2013.12", url: "" },
   ],
 };
 
