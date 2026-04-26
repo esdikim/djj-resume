@@ -112,6 +112,42 @@ export const resumeData = {
     { title: "클라우드 플랫폼에서의 Ansible 및 AWX를 활용한 자동화 사례", outlet: "사내 세미나 · 2021.06", url: "" },
     { title: "VDI 로그 관리/검색 시스템 구축 경험 공유", outlet: "사내 워크숍 · 2013.12", url: "" },
   ],
+  // Career Reflections — 각 시기별 "역할 / 성과 / 가장 인상 깊었던 점 / 배운 점"
+  // 빈 항목은 추후 직접 채워 넣을 수 있도록 placeholder로 두었습니다.
+  reflections: [
+    {
+      era: "Samsung Cloud Platform 시대",
+      period: "2018 — 현재",
+      role: "(예) Cloud Technical Lead로서 SCP 내재화/상품 기획·개발을 리드하고, 엔터프라이즈 고객의 기술 자문(TAM 역할)을 병행.",
+      achievements: "(예) Nuri Compute·GenAI Console 등 신규 상품 라인업 출시, OpenStack/VMware 듀얼 스택 내재화로 벤더 종속 완화, Ansible/AWX 자동화로 운영 효율 N% 향상.",
+      mostMemorable: "(예) GenAI Console 0→1 기획 단계에서 시장 요구를 직접 정의하고, 첫 PoC를 사내 데모에서 성공시킨 순간.",
+      lessons: "(예) ‘기술’ 보다 ‘고객의 문제 정의’가 먼저라는 점. 플랫폼은 결국 운영 자동화와 표준화의 누적이라는 것.",
+    },
+    {
+      era: "오픈소스 & 데이터 인프라 전환기",
+      period: "2013 — 2017",
+      role: "(예) PostgreSQL 전환·CDN 분배·VDI 로그 시스템 등 오픈소스 기반 인프라 설계/리드.",
+      achievements: "(예) 상용 DBMS → PostgreSQL 전환으로 라이선스 비용 절감 및 운영 표준화, 빅데이터 전문가 양성 TF 운영.",
+      mostMemorable: "(예) 미션 크리티컬 시스템을 오픈소스로 전환하며 ‘안정성에 대한 조직의 두려움’을 데이터로 설득해 낸 경험.",
+      lessons: "(예) 기술 도입은 ‘증명’과 ‘설득’의 합. 오픈소스는 자유를 주지만 책임도 함께 가져온다는 것.",
+    },
+    {
+      era: "전략 기획 & 솔루션 R&D",
+      period: "2009 — 2012",
+      role: "(예) 인프라본부 기술 로드맵 수립, RFID/USN 위치추적 솔루션 개발, 경영혁신 마스터플랜 수행.",
+      achievements: "(예) 본부 단위 3개년 기술 로드맵 정립, SmartCity 위치추적 솔루션 상용화, BPM 기반 업무 표준화.",
+      mostMemorable: "(예) 현장 엔지니어 → 전략 기획자 역할 전환을 경험하며 비즈니스 언어로 기술을 번역하는 법을 배움.",
+      lessons: "(예) ‘무엇을 만들 것인가’ 보다 ‘왜 만드는가’를 정의하는 일이 가장 어렵고 가치 있다.",
+    },
+    {
+      era: "통신 빌링 시스템 — 커리어 시작점",
+      period: "1996 — 2003",
+      role: "(예) UNITEL·AT&T Billing System 개발/운영, 청구 자동화 시스템 구축.",
+      achievements: "(예) 대용량 청구 배치 처리 안정화, 수납 정합성 99.9% 달성, 신입에서 PL 역할까지 성장.",
+      mostMemorable: "(예) 첫 야간 배치 장애를 새벽까지 잡아내며 시스템 운영의 무게를 실감한 경험.",
+      lessons: "(예) 도메인 이해 없는 코드는 위험하다. 그리고 ‘문서화’는 미래의 나를 살린다.",
+    },
+  ],
 };
 
 export type ResumeData = typeof resumeData;
