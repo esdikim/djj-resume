@@ -104,6 +104,9 @@ export function buildMarkdown(): string {
     ),
   );
   lines.push(``);
+  lines.push(`## References`);
+  lines.push(r.references);
+  lines.push(``);
   return lines.join("\n");
 }
 
