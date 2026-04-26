@@ -6,6 +6,8 @@ export function buildMarkdown(): string {
   lines.push(`# ${r.name} (${r.nameEn})`);
   lines.push(`**${r.title}** · ${r.subtitle}`);
   lines.push(``);
+  lines.push(`> ${r.headline}`);
+  lines.push(``);
   lines.push(`📍 ${r.location}  |  📧 ${r.email}  |  📞 ${r.phone}  |  🔗 ${r.linkedin}`);
   lines.push(``);
   lines.push(`---`);
@@ -13,8 +15,22 @@ export function buildMarkdown(): string {
   lines.push(`## Professional Summary`);
   lines.push(r.summary);
   lines.push(``);
+  lines.push(`**Value Proposition** — ${r.valueProposition}`);
+  lines.push(``);
   lines.push(`## Core Competencies`);
   r.competencies.forEach((c) => lines.push(`- **${c.title}**: ${c.desc}`));
+  lines.push(``);
+  lines.push(`## Expertise Matrix`);
+  lines.push(`| Area | Level | Years |`);
+  lines.push(`|------|-------|-------|`);
+  r.expertiseMatrix.forEach((e) => lines.push(`| ${e.area} | **${e.level}** | ${e.years} |`));
+  lines.push(``);
+  lines.push(`## Key Achievements (Quantified)`);
+  lines.push(`> 아래 수치는 기존 경력을 기반으로 한 추정치입니다. 실제 수치로 교체해 주세요.`);
+  lines.push(``);
+  r.keyAchievements.forEach((k) =>
+    lines.push(`- **${k.metric}** — ${k.label}  \n  ${k.detail}`),
+  );
   lines.push(``);
   lines.push(`## Professional Experience`);
   lines.push(`### ${r.currentRole.company} — ${r.currentRole.role}`);
