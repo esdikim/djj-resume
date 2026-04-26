@@ -35,6 +35,17 @@ export function buildMarkdown(): string {
   lines.push(`### Earlier Career (1996–2017)`);
   r.earlierHighlights.forEach((h) => lines.push(`- **[${h.period}] ${h.title}** — ${h.desc}`));
   lines.push(``);
+  lines.push(`## Career Reflections`);
+  lines.push(`> 각 시기별로 **수행한 역할 / 주요 성과 / 가장 인상 깊었던 점 / 배운 점** 을 정리합니다. (괄호 안 (예)로 시작하는 문장은 placeholder이니 실제 경험으로 교체해 주세요.)`);
+  lines.push(``);
+  r.reflections.forEach((rf) => {
+    lines.push(`### ${rf.era}  \`${rf.period}\``);
+    lines.push(`- **수행한 역할**: ${rf.role}`);
+    lines.push(`- **주요 성과**: ${rf.achievements}`);
+    lines.push(`- **가장 인상 깊었던 점**: ${rf.mostMemorable}`);
+    lines.push(`- **가장 많이 배운 점**: ${rf.lessons}`);
+    lines.push(``);
+  });
   lines.push(`## Technical Skills`);
   r.skillGroups.forEach((g) => lines.push(`- **${g.title}**: ${g.items.join(", ")}`));
   lines.push(``);
