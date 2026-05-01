@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Save, RotateCcw, FileDown, FileText, LogOut, Eye, Pencil, Columns } from "lucide-react";
+import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns } from "lucide-react";
+import { exportDocx } from "@/lib/exportDocx";
+import { exportPdf } from "@/lib/exportPdf";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "@tanstack/react-router";
 import { MarkdownPreview } from "./MarkdownPreview";
@@ -14,6 +16,7 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
   const [loading, setLoading] = useState(true);
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [view, setView] = useState<ViewMode>("split");
+  const [busy, setBusy] = useState<null | "pdf" | "docx">(null);
   const navigate = useNavigate();
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const initialized = useRef(false);
@@ -105,6 +108,17 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
         .replace(/^- /gm, "• "),
     );
 
+  const handlePdf = async () => {
+    setBusy("pdf");
+    try { await exportPdf(content); } catch (e) { console.error(e); alert("PDF 생성 실패"); }
+    finally { setBusy(null); }
+  };
+  const handleDocx = async () => {
+    setBusy("docx");
+    try { await exportDocx(); } catch (e) { console.error(e); alert("Word 생성 실패"); }
+    finally { setBusy(null); }
+  };
+
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
@@ -163,6 +177,20 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
             className="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
           >
             <RotateCcw className="h-3.5 w-3.5" /> Reset
+          </button>
+          <button
+            onClick={handlePdf}
+            disabled={busy !== null}
+            className="flex items-center gap-1.5 rounded-lg border border-brand/40 bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand/20 disabled:opacity-60"
+          >
+            {busy === "pdf" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <FileType className="h-3.5 w-3.5" />} PDF
+          </button>
+          <button
+            onClick={handleDocx}
+            disabled={busy !== null}
+            className="flex items-center gap-1.5 rounded-lg border border-brand/40 bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand/20 disabled:opacity-60"
+          >
+            {busy === "docx" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <FileText className="h-3.5 w-3.5" />} Word
           </button>
           <button
             onClick={exportMd}

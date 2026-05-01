@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { User2, Briefcase, Award, GraduationCap, Wrench, BookOpen, Mail, LogOut, Download, FileDown, FileText } from "lucide-react";
+import { User2, Briefcase, Award, GraduationCap, Wrench, BookOpen, Mail, LogOut, Download, FileDown, FileText, FileType, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { exportMarkdown, exportPlainText } from "@/lib/exportResume";
+import { exportDocx } from "@/lib/exportDocx";
+import { exportPdf } from "@/lib/exportPdf";
 import { resumeData } from "@/data/resume";
 import { useNavigate } from "@tanstack/react-router";
 
@@ -18,7 +20,19 @@ const sections = [
 export function Sidebar({ userEmail }: { userEmail?: string }) {
   const [active, setActive] = useState("about");
   const [exportOpen, setExportOpen] = useState(false);
+  const [busy, setBusy] = useState<null | "pdf" | "docx">(null);
   const navigate = useNavigate();
+
+  const handlePdf = async () => {
+    setBusy("pdf");
+    try { await exportPdf(); } catch (e) { console.error(e); alert("PDF 생성 실패"); }
+    finally { setBusy(null); setExportOpen(false); }
+  };
+  const handleDocx = async () => {
+    setBusy("docx");
+    try { await exportDocx(); } catch (e) { console.error(e); alert("Word 생성 실패"); }
+    finally { setBusy(null); setExportOpen(false); }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -98,8 +112,24 @@ export function Sidebar({ userEmail }: { userEmail?: string }) {
           {exportOpen && (
             <div className="absolute bottom-full left-0 right-0 mb-2 overflow-hidden rounded-lg border border-sidebar-border bg-card text-card-foreground shadow-card">
               <button
+                onClick={handlePdf}
+                disabled={busy !== null}
+                className="flex w-full items-center gap-2 px-3 py-2.5 text-sm hover:bg-muted disabled:opacity-60"
+              >
+                {busy === "pdf" ? <Loader2 className="h-4 w-4 animate-spin text-brand" /> : <FileType className="h-4 w-4 text-brand" />}
+                {busy === "pdf" ? "PDF 생성 중..." : "PDF (.pdf)"}
+              </button>
+              <button
+                onClick={handleDocx}
+                disabled={busy !== null}
+                className="flex w-full items-center gap-2 border-t border-border px-3 py-2.5 text-sm hover:bg-muted disabled:opacity-60"
+              >
+                {busy === "docx" ? <Loader2 className="h-4 w-4 animate-spin text-brand" /> : <FileText className="h-4 w-4 text-brand" />}
+                {busy === "docx" ? "Word 생성 중..." : "MS Word (.docx)"}
+              </button>
+              <button
                 onClick={() => { exportMarkdown(); setExportOpen(false); }}
-                className="flex w-full items-center gap-2 px-3 py-2.5 text-sm hover:bg-muted"
+                className="flex w-full items-center gap-2 border-t border-border px-3 py-2.5 text-sm hover:bg-muted"
               >
                 <FileDown className="h-4 w-4 text-brand" /> Markdown (.md)
               </button>
