@@ -110,7 +110,7 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
 
   const handlePdf = async () => {
     setBusy("pdf");
-    try { await exportPdf(); } catch (e) { console.error(e); alert("PDF 생성 실패"); }
+    try { await exportPdf(content); } catch (e) { console.error(e); alert("PDF 생성 실패"); }
     finally { setBusy(null); }
   };
   const handleDocx = async () => {
