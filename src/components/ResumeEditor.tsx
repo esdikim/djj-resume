@@ -108,6 +108,17 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
         .replace(/^- /gm, "• "),
     );
 
+  const handlePdf = async () => {
+    setBusy("pdf");
+    try { await exportPdf(); } catch (e) { console.error(e); alert("PDF 생성 실패"); }
+    finally { setBusy(null); }
+  };
+  const handleDocx = async () => {
+    setBusy("docx");
+    try { await exportDocx(); } catch (e) { console.error(e); alert("Word 생성 실패"); }
+    finally { setBusy(null); }
+  };
+
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
