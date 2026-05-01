@@ -16,6 +16,7 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
   const [loading, setLoading] = useState(true);
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [view, setView] = useState<ViewMode>("split");
+  const [busy, setBusy] = useState<null | "pdf" | "docx">(null);
   const navigate = useNavigate();
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const initialized = useRef(false);
