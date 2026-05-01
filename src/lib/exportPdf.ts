@@ -58,8 +58,8 @@ function mdToHtml(md: string): string {
   return out.join("");
 }
 
-export async function exportPdf() {
-  const md = buildMarkdown();
+export async function exportPdf(markdown?: string) {
+  const md = markdown ?? buildMarkdown();
   const html = mdToHtml(md);
 
   // 화면 밖에 렌더링 컨테이너 생성
