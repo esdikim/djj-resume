@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Save, RotateCcw, FileDown, FileText, LogOut, Eye, Pencil, Columns } from "lucide-react";
+import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns } from "lucide-react";
+import { exportDocx } from "@/lib/exportDocx";
+import { exportPdf } from "@/lib/exportPdf";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "@tanstack/react-router";
 import { MarkdownPreview } from "./MarkdownPreview";
