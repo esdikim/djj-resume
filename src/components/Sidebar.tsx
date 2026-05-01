@@ -112,8 +112,24 @@ export function Sidebar({ userEmail }: { userEmail?: string }) {
           {exportOpen && (
             <div className="absolute bottom-full left-0 right-0 mb-2 overflow-hidden rounded-lg border border-sidebar-border bg-card text-card-foreground shadow-card">
               <button
+                onClick={handlePdf}
+                disabled={busy !== null}
+                className="flex w-full items-center gap-2 px-3 py-2.5 text-sm hover:bg-muted disabled:opacity-60"
+              >
+                {busy === "pdf" ? <Loader2 className="h-4 w-4 animate-spin text-brand" /> : <FileType className="h-4 w-4 text-brand" />}
+                {busy === "pdf" ? "PDF 생성 중..." : "PDF (.pdf)"}
+              </button>
+              <button
+                onClick={handleDocx}
+                disabled={busy !== null}
+                className="flex w-full items-center gap-2 border-t border-border px-3 py-2.5 text-sm hover:bg-muted disabled:opacity-60"
+              >
+                {busy === "docx" ? <Loader2 className="h-4 w-4 animate-spin text-brand" /> : <FileText className="h-4 w-4 text-brand" />}
+                {busy === "docx" ? "Word 생성 중..." : "MS Word (.docx)"}
+              </button>
+              <button
                 onClick={() => { exportMarkdown(); setExportOpen(false); }}
-                className="flex w-full items-center gap-2 px-3 py-2.5 text-sm hover:bg-muted"
+                className="flex w-full items-center gap-2 border-t border-border px-3 py-2.5 text-sm hover:bg-muted"
               >
                 <FileDown className="h-4 w-4 text-brand" /> Markdown (.md)
               </button>
