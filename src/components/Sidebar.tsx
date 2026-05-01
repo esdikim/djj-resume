@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { User2, Briefcase, Award, GraduationCap, Wrench, BookOpen, Mail, LogOut, Download, FileDown, FileText } from "lucide-react";
+import { User2, Briefcase, Award, GraduationCap, Wrench, BookOpen, Mail, LogOut, Download, FileDown, FileText, FileType, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { exportMarkdown, exportPlainText } from "@/lib/exportResume";
+import { exportDocx } from "@/lib/exportDocx";
+import { exportPdf } from "@/lib/exportPdf";
 import { resumeData } from "@/data/resume";
 import { useNavigate } from "@tanstack/react-router";
 
