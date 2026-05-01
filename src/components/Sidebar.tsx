@@ -20,7 +20,19 @@ const sections = [
 export function Sidebar({ userEmail }: { userEmail?: string }) {
   const [active, setActive] = useState("about");
   const [exportOpen, setExportOpen] = useState(false);
+  const [busy, setBusy] = useState<null | "pdf" | "docx">(null);
   const navigate = useNavigate();
+
+  const handlePdf = async () => {
+    setBusy("pdf");
+    try { await exportPdf(); } catch (e) { console.error(e); alert("PDF 생성 실패"); }
+    finally { setBusy(null); setExportOpen(false); }
+  };
+  const handleDocx = async () => {
+    setBusy("docx");
+    try { await exportDocx(); } catch (e) { console.error(e); alert("Word 생성 실패"); }
+    finally { setBusy(null); setExportOpen(false); }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
