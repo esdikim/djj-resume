@@ -179,6 +179,20 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
             <RotateCcw className="h-3.5 w-3.5" /> Reset
           </button>
           <button
+            onClick={handlePdf}
+            disabled={busy !== null}
+            className="flex items-center gap-1.5 rounded-lg border border-brand/40 bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand/20 disabled:opacity-60"
+          >
+            {busy === "pdf" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <FileType className="h-3.5 w-3.5" />} PDF
+          </button>
+          <button
+            onClick={handleDocx}
+            disabled={busy !== null}
+            className="flex items-center gap-1.5 rounded-lg border border-brand/40 bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand/20 disabled:opacity-60"
+          >
+            {busy === "docx" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <FileText className="h-3.5 w-3.5" />} Word
+          </button>
+          <button
             onClick={exportMd}
             className="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
           >
