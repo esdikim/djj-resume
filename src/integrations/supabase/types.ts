@@ -21,6 +21,7 @@ export type Database = {
           id: string
           updated_at: string
           user_id: string
+          variant: string
         }
         Insert: {
           content?: string
@@ -28,6 +29,7 @@ export type Database = {
           id?: string
           updated_at?: string
           user_id: string
+          variant?: string
         }
         Update: {
           content?: string
@@ -35,6 +37,7 @@ export type Database = {
           id?: string
           updated_at?: string
           user_id?: string
+          variant?: string
         }
         Relationships: []
       }
