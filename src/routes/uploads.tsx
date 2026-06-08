@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import { Loader2, Upload, Trash2, Download, FileText, ArrowLeft, Eye } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+// @ts-expect-error - mammoth browser build has no types
 import mammoth from "mammoth/mammoth.browser";
 
 export const Route = createFileRoute("/uploads")({
