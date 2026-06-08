@@ -5,7 +5,9 @@ import { getTemplate, matchTags, type ResumeTemplate, type ResumeSectionId } fro
 export function getFilteredResume(templateId: string = "default") {
   const tpl = getTemplate(templateId);
   const r = resumeData;
-  const filter = <T extends { aud?: string[] }>(arr: T[]) => arr.filter((x) => matchTags(x.aud, tpl.tags));
+  function filter<T>(arr: readonly T[]): T[] {
+    return (arr as readonly (T & { aud?: string[] })[]).filter((x) => matchTags(x.aud, tpl.tags));
+  }
   return {
     tpl,
     data: {
@@ -14,11 +16,11 @@ export function getFilteredResume(templateId: string = "default") {
       subtitle: tpl.overrides?.subtitle ?? r.subtitle,
       headline: tpl.overrides?.headline ?? r.headline,
       valueProposition: tpl.overrides?.valueProposition ?? r.valueProposition,
-      competencies: filter(r.competencies as any),
-      expertiseMatrix: filter(r.expertiseMatrix as any),
-      keyAchievements: filter(r.keyAchievements as any),
-      earlierHighlights: filter(r.earlierHighlights as any),
-      reflections: filter(r.reflections as any),
+      competencies: filter(r.competencies),
+      expertiseMatrix: filter(r.expertiseMatrix),
+      keyAchievements: filter(r.keyAchievements),
+      earlierHighlights: filter(r.earlierHighlights),
+      reflections: filter(r.reflections),
     },
   };
 }
