@@ -13,7 +13,6 @@ import {
   ShadingType,
   ExternalHyperlink,
 } from "docx";
-import { resumeData } from "@/data/resume";
 import { getFilteredResume } from "./exportResume";
 
 const FONT = "Malgun Gothic";
