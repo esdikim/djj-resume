@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns, Layers } from "lucide-react";
+import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns, Layers, FolderUp } from "lucide-react";
 import { exportDocx } from "@/lib/exportDocx";
 import { exportPdf } from "@/lib/exportPdf";
 import { supabase } from "@/integrations/supabase/client";
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, Link } from "@tanstack/react-router";
 import { MarkdownPreview } from "./MarkdownPreview";
 import { getDefaultMarkdown } from "@/lib/defaultMarkdown";
 import { resumeData } from "@/data/resume";
@@ -207,6 +207,12 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
           >
             <RotateCcw className="h-3.5 w-3.5" /> Reset
           </button>
+          <Link
+            to="/uploads"
+            className="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
+          >
+            <FolderUp className="h-3.5 w-3.5" /> 파일 업로드
+          </Link>
           <button
             onClick={handlePdf}
             disabled={busy !== null}
