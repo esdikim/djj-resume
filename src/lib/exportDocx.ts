@@ -403,7 +403,7 @@ export async function exportDocx(templateId: string = "default") {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "resume-djj.docx";
+  a.download = `resume-${templateId}.docx`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
