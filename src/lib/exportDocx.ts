@@ -14,6 +14,7 @@ import {
   ExternalHyperlink,
 } from "docx";
 import { resumeData } from "@/data/resume";
+import { getFilteredResume } from "./exportResume";
 
 const FONT = "Malgun Gothic";
 
@@ -61,8 +62,9 @@ function tcell(text: string, opts: { bold?: boolean; shade?: string; width: numb
   });
 }
 
-export async function exportDocx() {
-  const r = resumeData;
+export async function exportDocx(templateId: string = "default") {
+  const { tpl, data: r } = getFilteredResume(templateId);
+  const S = new Set(tpl.sections);
   const children: (Paragraph | Table)[] = [];
 
   // Header
