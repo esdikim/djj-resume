@@ -19,12 +19,12 @@ export const resumeData = {
   ],
 
   competencies: [
-    { title: "Cloud Architecture", desc: "IaaS · PaaS · SaaS, OpenStack, VMware, Samsung Cloud Platform 기반의 엔드투엔드 설계 및 내재화." },
-    { title: "DevOps & Automation", desc: "Ansible, AWX, Container, CI/CD, GitOps를 활용한 플랫폼 자동화와 운영 효율화." },
-    { title: "Technical Account Management", desc: "엔터프라이즈 고객 기술 파트너로서 RCA, SLA 관리, 솔루션 자문 수행." },
-    { title: "Strategic Planning", desc: "기술 로드맵 개발, 솔루션 기획, IT 거버넌스 및 경영혁신 마스터플랜 수립." },
-    { title: "Incident & RCA", desc: "성능 이슈 분석, 근본 원인 분석, 인시던트 관리 및 안정화 프로세스 구축." },
-    { title: "Open Source Strategy", desc: "오픈소스 DBMS·플랫폼 도입 전략 수립, PostgreSQL 전환 등 다수의 OSS 내재화 리딩." },
+    { title: "Cloud Architecture", desc: "IaaS · PaaS · SaaS, OpenStack, VMware, Samsung Cloud Platform 기반의 엔드투엔드 설계 및 내재화.", aud: ["cloud-tam", "solution-architect", "rnd"] },
+    { title: "DevOps & Automation", desc: "Ansible, AWX, Container, CI/CD, GitOps를 활용한 플랫폼 자동화와 운영 효율화.", aud: ["cloud-tam", "solution-architect", "rnd"] },
+    { title: "Technical Account Management", desc: "엔터프라이즈 고객 기술 파트너로서 RCA, SLA 관리, 솔루션 자문 수행.", aud: ["cloud-tam"] },
+    { title: "Strategic Planning", desc: "기술 로드맵 개발, 솔루션 기획, IT 거버넌스 및 경영혁신 마스터플랜 수립.", aud: ["pm-strategy", "solution-architect"] },
+    { title: "Incident & RCA", desc: "성능 이슈 분석, 근본 원인 분석, 인시던트 관리 및 안정화 프로세스 구축.", aud: ["cloud-tam"] },
+    { title: "Open Source Strategy", desc: "오픈소스 DBMS·플랫폼 도입 전략 수립, PostgreSQL 전환 등 다수의 OSS 내재화 리딩.", aud: ["rnd", "solution-architect", "pm-strategy"] },
   ],
 
   currentRole: {
@@ -64,13 +64,13 @@ export const resumeData = {
   ],
 
   earlierHighlights: [
-    { period: "2017 (1년)", title: "B2B 클라우드향 자동화 (Smart Workflow R&D)", desc: "공공/기업 대상 워크플로우 자동화 솔루션 연구개발." },
-    { period: "2015–2016 (2년)", title: "PostgreSQL 적용/전환 과제", desc: "오픈소스 DBMS 도입·전환 프로젝트 리드 (18.0MM)." },
-    { period: "2014 (1년)", title: "DB 동기화 고도화 / CDN 분배시스템 개발 TF", desc: "Oracle·MySQL·PostgreSQL 동기화, GSLB·CDN 분배 시스템 설계." },
-    { period: "2013 (1년)", title: "VDI 로그 관리/검색 시스템 구축 · 빅데이터 실습 TF", desc: "Java/RHEL/Apache/Tomcat 기반 로그 시스템 및 빅데이터 전문가 양성." },
-    { period: "2010–2012 (3년)", title: "기술 로드맵 / 경영혁신 마스터플랜", desc: "인프라본부 기술 로드맵, 본부 솔루션 경쟁력 강화 혁신과제 (BPM, 전략경영)." },
-    { period: "2004–2009 (6년)", title: "RFID/USN 위치추적 솔루션 개발", desc: "PRO*C, Oracle, Windows Server 기반 SmartCity 위치추적 솔루션 개발." },
-    { period: "1996–2003 (8년)", title: "UNITEL · AT&T Billing System 개발/운영", desc: "통신사 빌링/청구/수납 시스템 개발 및 운영, 청구 자동화 시스템 구축." },
+    { period: "2017 (1년)", title: "B2B 클라우드향 자동화 (Smart Workflow R&D)", desc: "공공/기업 대상 워크플로우 자동화 솔루션 연구개발.", aud: ["rnd", "solution-architect"] },
+    { period: "2015–2016 (2년)", title: "PostgreSQL 적용/전환 과제", desc: "오픈소스 DBMS 도입·전환 프로젝트 리드 (18.0MM).", aud: ["rnd", "solution-architect", "pm-strategy"] },
+    { period: "2014 (1년)", title: "DB 동기화 고도화 / CDN 분배시스템 개발 TF", desc: "Oracle·MySQL·PostgreSQL 동기화, GSLB·CDN 분배 시스템 설계.", aud: ["rnd", "solution-architect"] },
+    { period: "2013 (1년)", title: "VDI 로그 관리/검색 시스템 구축 · 빅데이터 실습 TF", desc: "Java/RHEL/Apache/Tomcat 기반 로그 시스템 및 빅데이터 전문가 양성.", aud: ["rnd", "solution-architect"] },
+    { period: "2010–2012 (3년)", title: "기술 로드맵 / 경영혁신 마스터플랜", desc: "인프라본부 기술 로드맵, 본부 솔루션 경쟁력 강화 혁신과제 (BPM, 전략경영).", aud: ["pm-strategy", "solution-architect"] },
+    { period: "2004–2009 (6년)", title: "RFID/USN 위치추적 솔루션 개발", desc: "PRO*C, Oracle, Windows Server 기반 SmartCity 위치추적 솔루션 개발.", aud: ["rnd"] },
+    { period: "1996–2003 (8년)", title: "UNITEL · AT&T Billing System 개발/운영", desc: "통신사 빌링/청구/수납 시스템 개발 및 운영, 청구 자동화 시스템 구축.", aud: ["rnd"] },
   ],
 
   skillGroups: [
@@ -106,15 +106,15 @@ export const resumeData = {
 
   // 2) Expertise Matrix — 영역별 숙련도 (Expert / Advanced / Proficient)
   expertiseMatrix: [
-    { area: "Cloud Architecture (IaaS/PaaS/SaaS)", level: "Expert", years: "8+" },
-    { area: "OpenStack / VMware 내재화", level: "Expert", years: "8+" },
-    { area: "DevOps Automation (Ansible/AWX)", level: "Expert", years: "7+" },
-    { area: "Open Source Strategy & DBMS 전환", level: "Expert", years: "10+" },
-    { area: "Technical Account Management", level: "Advanced", years: "8+" },
-    { area: "Solution Architecture & Roadmap", level: "Advanced", years: "15+" },
-    { area: "Container / Kubernetes", level: "Advanced", years: "5+" },
-    { area: "GenAI Platform / LLMOps", level: "Proficient", years: "2+" },
-    { area: "Big Data (Hadoop/Spark)", level: "Proficient", years: "3+" },
+    { area: "Cloud Architecture (IaaS/PaaS/SaaS)", level: "Expert", years: "8+", aud: ["cloud-tam", "solution-architect", "rnd"] },
+    { area: "OpenStack / VMware 내재화", level: "Expert", years: "8+", aud: ["solution-architect", "rnd", "cloud-tam"] },
+    { area: "DevOps Automation (Ansible/AWX)", level: "Expert", years: "7+", aud: ["cloud-tam", "rnd", "solution-architect"] },
+    { area: "Open Source Strategy & DBMS 전환", level: "Expert", years: "10+", aud: ["rnd", "solution-architect", "pm-strategy"] },
+    { area: "Technical Account Management", level: "Advanced", years: "8+", aud: ["cloud-tam"] },
+    { area: "Solution Architecture & Roadmap", level: "Advanced", years: "15+", aud: ["solution-architect", "pm-strategy"] },
+    { area: "Container / Kubernetes", level: "Advanced", years: "5+", aud: ["cloud-tam", "solution-architect", "rnd"] },
+    { area: "GenAI Platform / LLMOps", level: "Proficient", years: "2+", aud: ["solution-architect", "rnd"] },
+    { area: "Big Data (Hadoop/Spark)", level: "Proficient", years: "3+", aud: ["rnd", "solution-architect"] },
   ],
 
   // 3) Key Achievements (Quantified) — 정량적 성과 (기존 경력 기반 추정치, 실제 수치 검증 필요)
