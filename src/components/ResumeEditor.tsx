@@ -326,6 +326,8 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
           입력하는 즉시 미리보기에 반영되며, 약 0.6초 후 자동으로 클라우드에 저장됩니다. (변형별 독립 저장)
         </span>
       </div>
+
+      <JDTailorDialog open={jdOpen} onClose={() => setJdOpen(false)} onGenerated={handleJdGenerated} />
     </div>
   );
 }
