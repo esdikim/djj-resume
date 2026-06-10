@@ -198,6 +198,15 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
             </select>
           </div>
 
+          {/* JD Tailor (AI) */}
+          <button
+            onClick={() => setJdOpen(true)}
+            className="flex items-center gap-1.5 rounded-lg border border-brand/40 bg-gradient-to-r from-brand/15 to-brand/5 px-3 py-1.5 text-xs font-semibold text-brand transition hover:from-brand/25 hover:to-brand/10"
+            title="채용공고(JD)를 붙여넣으면 AI가 맞춤 이력서를 생성합니다"
+          >
+            <Sparkles className="h-3.5 w-3.5" /> JD 맞춤
+          </button>
+
           {/* View switcher */}
           <div className="flex overflow-hidden rounded-lg border border-border bg-muted/40">
             <button
