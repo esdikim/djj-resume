@@ -98,6 +98,23 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
     }
   };
 
+  const handleJdGenerated = async (markdown: string) => {
+    // upsert into jd-custom variant, then switch
+    const target = "jd-custom";
+    const { data: existing } = await supabase
+      .from("resumes")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("variant", target)
+      .maybeSingle();
+    if (existing) {
+      await supabase.from("resumes").update({ content: markdown }).eq("user_id", userId).eq("variant", target);
+    } else {
+      await supabase.from("resumes").insert({ user_id: userId, variant: target, content: markdown });
+    }
+    setVariant(target);
+  };
+
   const downloadFile = (filename: string, mime: string, body: string) => {
     const blob = new Blob([body], { type: `${mime};charset=utf-8` });
     const url = URL.createObjectURL(blob);
