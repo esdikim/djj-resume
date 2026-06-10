@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns, Layers, FolderUp } from "lucide-react";
+import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns, Layers, FolderUp, Sparkles } from "lucide-react";
 import { exportDocx } from "@/lib/exportDocx";
 import { exportPdf } from "@/lib/exportPdf";
 import { supabase } from "@/integrations/supabase/client";
@@ -8,6 +8,7 @@ import { MarkdownPreview } from "./MarkdownPreview";
 import { getDefaultMarkdown } from "@/lib/defaultMarkdown";
 import { resumeData } from "@/data/resume";
 import { TEMPLATES, getTemplate } from "@/data/templates";
+import { JDTailorDialog } from "./JDTailorDialog";
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 type ViewMode = "split" | "edit" | "preview";
@@ -24,6 +25,7 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [view, setView] = useState<ViewMode>("split");
   const [busy, setBusy] = useState<null | "pdf" | "docx">(null);
+  const [jdOpen, setJdOpen] = useState(false);
   const navigate = useNavigate();
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const loadedVariant = useRef<string | null>(null);
