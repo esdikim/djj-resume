@@ -175,6 +175,16 @@ export const TEMPLATES: ResumeTemplate[] = [
         "통신 빌링 → OSS 전환 → 클라우드 플랫폼 내재화 | 30년의 일관된 R&D 여정",
     },
   },
+  {
+    id: "jd-custom",
+    name: "JD 맞춤 (AI 생성)",
+    description: "채용공고를 붙여넣으면 AI가 마스터 이력서에서 관련 내용만 골라 재구성한 맞춤 버전",
+    tags: [],
+    sections: ALL_SECTIONS,
+    overrides: {
+      headline: "JD에 맞춰 AI로 재구성된 맞춤 이력서",
+    },
+  },
 ];
 
 export function getTemplate(id: string): ResumeTemplate {
