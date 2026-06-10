@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns, Layers, FolderUp } from "lucide-react";
+import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns, Layers, FolderUp, Sparkles } from "lucide-react";
 import { exportDocx } from "@/lib/exportDocx";
 import { exportPdf } from "@/lib/exportPdf";
 import { supabase } from "@/integrations/supabase/client";
@@ -8,6 +8,7 @@ import { MarkdownPreview } from "./MarkdownPreview";
 import { getDefaultMarkdown } from "@/lib/defaultMarkdown";
 import { resumeData } from "@/data/resume";
 import { TEMPLATES, getTemplate } from "@/data/templates";
+import { JDTailorDialog } from "./JDTailorDialog";
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 type ViewMode = "split" | "edit" | "preview";
@@ -24,6 +25,7 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [view, setView] = useState<ViewMode>("split");
   const [busy, setBusy] = useState<null | "pdf" | "docx">(null);
+  const [jdOpen, setJdOpen] = useState(false);
   const navigate = useNavigate();
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const loadedVariant = useRef<string | null>(null);
@@ -94,6 +96,23 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
     if (confirm(`'${tpl.name}' 템플릿 기본값으로 되돌립니다. 현재 ${tpl.name} 버전의 내용을 잃게 됩니다. 계속할까요?`)) {
       setContent(getDefaultMarkdown(variant));
     }
+  };
+
+  const handleJdGenerated = async (markdown: string) => {
+    // upsert into jd-custom variant, then switch
+    const target = "jd-custom";
+    const { data: existing } = await supabase
+      .from("resumes")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("variant", target)
+      .maybeSingle();
+    if (existing) {
+      await supabase.from("resumes").update({ content: markdown }).eq("user_id", userId).eq("variant", target);
+    } else {
+      await supabase.from("resumes").insert({ user_id: userId, variant: target, content: markdown });
+    }
+    setVariant(target);
   };
 
   const downloadFile = (filename: string, mime: string, body: string) => {
@@ -178,6 +197,15 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
               ))}
             </select>
           </div>
+
+          {/* JD Tailor (AI) */}
+          <button
+            onClick={() => setJdOpen(true)}
+            className="flex items-center gap-1.5 rounded-lg border border-brand/40 bg-gradient-to-r from-brand/15 to-brand/5 px-3 py-1.5 text-xs font-semibold text-brand transition hover:from-brand/25 hover:to-brand/10"
+            title="채용공고(JD)를 붙여넣으면 AI가 맞춤 이력서를 생성합니다"
+          >
+            <Sparkles className="h-3.5 w-3.5" /> JD 맞춤
+          </button>
 
           {/* View switcher */}
           <div className="flex overflow-hidden rounded-lg border border-border bg-muted/40">
@@ -298,6 +326,8 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
           입력하는 즉시 미리보기에 반영되며, 약 0.6초 후 자동으로 클라우드에 저장됩니다. (변형별 독립 저장)
         </span>
       </div>
+
+      <JDTailorDialog open={jdOpen} onClose={() => setJdOpen(false)} onGenerated={handleJdGenerated} />
     </div>
   );
 }
