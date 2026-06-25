@@ -262,6 +262,20 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
           >
             <FolderUp className="h-3.5 w-3.5" /> 파일 업로드
           </Link>
+          <Link
+            to="/history"
+            className="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
+          >
+            <History className="h-3.5 w-3.5" /> 히스토리
+          </Link>
+          <button
+            onClick={handleManualSnapshot}
+            disabled={snapBusy}
+            className="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:opacity-60"
+            title="현재 내용을 히스토리에 저장합니다"
+          >
+            {snapBusy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Camera className="h-3.5 w-3.5" />} 스냅샷
+          </button>
           <button
             onClick={handlePdf}
             disabled={busy !== null}
