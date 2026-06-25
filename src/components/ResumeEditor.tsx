@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns, Layers, FolderUp, Sparkles } from "lucide-react";
+import { Loader2, Save, RotateCcw, FileDown, FileText, FileType, LogOut, Eye, Pencil, Columns, Layers, FolderUp, Sparkles, History, Camera } from "lucide-react";
 import { exportDocx } from "@/lib/exportDocx";
 import { exportPdf } from "@/lib/exportPdf";
 import { supabase } from "@/integrations/supabase/client";
@@ -29,6 +29,26 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
   const navigate = useNavigate();
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const loadedVariant = useRef<string | null>(null);
+  const lastSnapshot = useRef<{ variant: string; at: number; content: string } | null>(null);
+  const [snapBusy, setSnapBusy] = useState(false);
+
+  const snapshot = async (label: string | null, force = false) => {
+    const now = Date.now();
+    const last = lastSnapshot.current;
+    if (!force && last && last.variant === variant && last.content === content) return;
+    if (!force && last && last.variant === variant && now - last.at < 120_000 && Math.abs(last.content.length - content.length) < 40) return;
+    const { error } = await supabase.from("resume_history").insert({ user_id: userId, variant, content, label });
+    if (!error) lastSnapshot.current = { variant, at: now, content };
+    return error;
+  };
+
+  const handleManualSnapshot = async () => {
+    setSnapBusy(true);
+    const label = prompt("이 스냅샷에 대한 메모 (선택)") ?? "";
+    const err = await snapshot(label || "수동 저장", true);
+    setSnapBusy(false);
+    if (err) alert("스냅샷 저장 실패");
+  };
 
   const tpl = getTemplate(variant);
 
@@ -80,6 +100,7 @@ export function ResumeEditor({ userId, userEmail }: { userId: string; userEmail?
         setSaveState("error");
       } else {
         setSaveState("saved");
+        snapshot(null).catch((e) => console.error("Snapshot error:", e));
       }
     }, 600);
     return () => {
