@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      resume_history: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          label: string | null
+          user_id: string
+          variant: string
+        }
+        Insert: {
+          content?: string
+          created_at?: string
+          id?: string
+          label?: string | null
+          user_id: string
+          variant?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          label?: string | null
+          user_id?: string
+          variant?: string
+        }
+        Relationships: []
+      }
       resume_uploads: {
         Row: {
           created_at: string
