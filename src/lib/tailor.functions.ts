@@ -1,29 +1,47 @@
-import { createServerFn } from "@tanstack/react-start";
-import { generateText } from "ai";
 import { z } from "zod";
-import { createLovableAiGatewayProvider } from "./ai-gateway.server";
 import { buildMarkdown } from "./exportResume";
 
 const Input = z.object({
   jd: z.string().min(20, "JD가 너무 짧습니다 (20자 이상)"),
   language: z.enum(["ko", "en"]).default("ko"),
+  apiKey: z.string().optional(),
 });
 
-export const tailorResumeFromJD = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => Input.parse(data))
-  .handler(async ({ data }) => {
-    const key = process.env.LOVABLE_API_KEY;
-    if (!key) throw new Error("Missing LOVABLE_API_KEY");
+export type TailorInput = z.infer<typeof Input>;
 
-    // 마스터 이력서 전체를 컨텍스트로 전달
-    const master = buildMarkdown("default");
+const STORAGE_KEY = "resume:geminiApiKey";
 
-    const gateway = createLovableAiGatewayProvider(key);
-    const model = gateway("google/gemini-2.5-pro");
+export function getSavedGeminiApiKey(): string {
+  const envKey = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
+  if (envKey && envKey.trim()) return envKey.trim();
+  if (typeof window !== "undefined") {
+    return localStorage.getItem(STORAGE_KEY) ?? "";
+  }
+  return "";
+}
 
-    const langLabel = data.language === "en" ? "English" : "Korean (한국어)";
+export function saveGeminiApiKey(key: string): void {
+  if (typeof window !== "undefined") {
+    if (key.trim()) {
+      localStorage.setItem(STORAGE_KEY, key.trim());
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }
+}
 
-    const system = `당신은 시니어 ICT 리쿠르터이자 이력서 작성 전문가입니다.
+export async function tailorResumeFromJD(rawInput: TailorInput): Promise<string> {
+  const data = Input.parse(rawInput);
+  const key = (data.apiKey || getSavedGeminiApiKey()).trim();
+  if (!key) {
+    throw new Error("Gemini API Key가 필요합니다. API Key를 입력하거나 VITE_GEMINI_API_KEY 환경변수를 설정해 주세요.");
+  }
+
+  // 마스터 이력서 전체를 컨텍스트로 전달
+  const master = buildMarkdown("default");
+  const langLabel = data.language === "en" ? "English" : "Korean (한국어)";
+
+  const system = `당신은 시니어 ICT 리쿠르터이자 이력서 작성 전문가입니다.
 주어진 마스터 이력서(후보자의 전체 경력·성과·자격)에서 채용공고(JD)와 가장 관련성 높은 내용을 선별·재구성하여, 해당 포지션에 최적화된 맞춤형 이력서를 ${langLabel}로 작성합니다.
 
 작성 원칙:
@@ -34,7 +52,7 @@ export const tailorResumeFromJD = createServerFn({ method: "POST" })
 5. **수치 강조**: 정량 성과를 가능한 한 앞쪽 bullet에 배치합니다.
 6. **출력 형식**: 순수 Markdown만 출력. 코드펜스(\`\`\`)나 설명 문구 없이 # 헤더부터 바로 시작합니다.`;
 
-    const prompt = `### 마스터 이력서 (Source of Truth)
+  const prompt = `### 마스터 이력서 (Source of Truth)
 ${master}
 
 ---
@@ -51,12 +69,33 @@ ${data.jd}
 - 이후 Summary, Core Strengths, Experience, Key Achievements, Skills, Certifications, Education 순으로 JD 관련성 높은 내용 위주로 재구성
 - 분량: A4 2-3페이지 수준`;
 
-    const { text } = await generateText({
-      model,
-      system,
-      prompt,
-    });
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(key)}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: system }] },
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+      }),
+    },
+  );
 
-    // 코드펜스 제거 (혹시 모델이 감쌌을 경우)
-    return text.replace(/^```(?:markdown|md)?\s*\n?/i, "").replace(/\n?```\s*$/i, "").trim();
-  });
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Gemini API 오류 (${response.status}): ${errText}`);
+  }
+
+  const json = await response.json();
+  const text: string =
+    json?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text ?? "").join("") ?? "";
+
+  if (!text) {
+    throw new Error("AI 응답이 비어 있습니다.");
+  }
+
+  return text
+    .replace(/^```(?:markdown|md)?\s*\n?/i, "")
+    .replace(/\n?```\s*$/i, "")
+    .trim();
+}

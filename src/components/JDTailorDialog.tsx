@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { Loader2, Sparkles, X } from "lucide-react";
-import { useServerFn } from "@tanstack/react-start";
-import { tailorResumeFromJD } from "@/lib/tailor.functions";
+import { KeyRound, Loader2, Sparkles, X } from "lucide-react";
+import {
+  getSavedGeminiApiKey,
+  saveGeminiApiKey,
+  tailorResumeFromJD,
+} from "@/lib/tailor.functions";
 
 interface Props {
   open: boolean;
@@ -10,11 +13,12 @@ interface Props {
 }
 
 export function JDTailorDialog({ open, onClose, onGenerated }: Props) {
+  const hasEnvKey = Boolean(import.meta.env.VITE_GEMINI_API_KEY);
+  const [apiKey, setApiKey] = useState(() => getSavedGeminiApiKey());
   const [jd, setJd] = useState("");
   const [language, setLanguage] = useState<"ko" | "en">("ko");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const tailor = useServerFn(tailorResumeFromJD);
 
   if (!open) return null;
 
@@ -24,16 +28,26 @@ export function JDTailorDialog({ open, onClose, onGenerated }: Props) {
       setError("JD는 최소 20자 이상 입력해 주세요.");
       return;
     }
+    if (!hasEnvKey && !apiKey.trim()) {
+      setError("Google Gemini API Key를 입력해 주세요.");
+      return;
+    }
+    if (!hasEnvKey) {
+      saveGeminiApiKey(apiKey);
+    }
     setLoading(true);
     try {
-      const md = await tailor({ data: { jd: jd.trim(), language } });
+      const md = await tailorResumeFromJD({
+        jd: jd.trim(),
+        language,
+        apiKey: apiKey.trim(),
+      });
       onGenerated(md);
       onClose();
       setJd("");
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
       if (msg.includes("429")) setError("요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.");
-      else if (msg.includes("402")) setError("AI 크레딧이 소진되었습니다. 워크스페이스 설정에서 크레딧을 추가해 주세요.");
       else setError(`생성 실패: ${msg}`);
     } finally {
       setLoading(false);
@@ -46,7 +60,7 @@ export function JDTailorDialog({ open, onClose, onGenerated }: Props) {
         <div className="flex items-center justify-between border-b border-border px-5 py-3">
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-brand" />
-            <h2 className="font-display text-sm font-semibold">JD 기반 맞춤 이력서 생성</h2>
+            <h2 className="font-display text-sm font-semibold">JD 기반 맞춤 이력서 생성 (Gemini AI)</h2>
           </div>
           <button onClick={onClose} className="rounded-md p-1 text-muted-foreground hover:bg-muted hover:text-foreground">
             <X className="h-4 w-4" />
@@ -55,9 +69,25 @@ export function JDTailorDialog({ open, onClose, onGenerated }: Props) {
 
         <div className="flex-1 overflow-auto px-5 py-4">
           <p className="mb-3 text-xs text-muted-foreground">
-            채용공고(JD) 전문을 붙여넣으세요. 마스터 이력서의 사실만 사용해 AI가 JD에 최적화된 맞춤 버전을 생성합니다.
+            채용공고(JD) 전문을 붙여넣으세요. 마스터 이력서의 사실만 사용해 Gemini AI가 JD에 최적화된 맞춤 버전을 생성합니다.
             결과는 <strong className="text-foreground">JD 맞춤 (AI 생성)</strong> 템플릿에 저장되며, 이후 자유롭게 편집 가능합니다.
           </p>
+
+          {!hasEnvKey && (
+            <div className="mb-3">
+              <label className="mb-1 flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                <KeyRound className="h-3.5 w-3.5 text-brand" />
+                Google Gemini API Key (브라우저에 로컬 저장됨)
+              </label>
+              <input
+                type="password"
+                value={apiKey}
+                onChange={(e) => setApiKey(e.target.value)}
+                placeholder="AIzaSy..."
+                className="w-full rounded-md border border-border bg-background px-3 py-1.5 font-mono text-xs text-foreground outline-none focus:border-brand"
+              />
+            </div>
+          )}
 
           <div className="mb-3 flex items-center gap-2">
             <label className="text-xs font-medium text-muted-foreground">출력 언어:</label>

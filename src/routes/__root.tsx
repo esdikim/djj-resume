@@ -1,6 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -25,48 +23,9 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Cloud Navigator는 엔터프라이즈 클라우드 플랫폼 설계, 기술 지원 및 DevOps 자동화를 위한 솔루션입니다." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Cloud Navigator는 엔터프라이즈 클라우드 플랫폼 설계, 기술 지원 및 DevOps 자동화를 위한 솔루션입니다." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Cloud Navigator는 엔터프라이즈 클라우드 플랫폼 설계, 기술 지원 및 DevOps 자동화를 위한 솔루션입니다." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a6d8521b-7c6b-4338-b058-14b889ce5411/id-preview-bb1e49e1--20f89351-ab98-4b31-9464-173ff1399aaa.lovable.app-1777101155365.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a6d8521b-7c6b-4338-b058-14b889ce5411/id-preview-bb1e49e1--20f89351-ab98-4b31-9464-173ff1399aaa.lovable.app-1777101155365.png" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   return <Outlet />;
